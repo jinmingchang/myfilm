@@ -57,3 +57,56 @@ export const getCinema=(id)=>{
         }
     })
 }
+
+export const getReception=(id)=>{
+    return axios.get("/gateway",{
+        params:{
+            cityId:id,
+            ticketFlag:2,
+            k:Date.now()
+        },
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.list'
+        }
+    })
+}
+
+export const getMinDisCinema=(id)=>{
+    return axios.get(`/gateway?cityId=${id}&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.recommend'
+        }
+    })
+}
+
+export const getSearchCinema=(id)=>{
+    return axios.get(`/gateway?cityId=${id}&ticketFlag=0&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.list'
+        }
+    })
+}
+
+export const getCinemaFilm=(id)=>{
+    return axios.get(`/gateway/?cinemaId=${id}&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.info'
+        }
+    })
+}
+
+export const getCinemaDetail=(id)=>{
+    return axios.get(`/gateway/?cinemaId=${id}&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.film-ticket.film.cinema-show-film'
+        }
+    })
+}
+
+export const getCinemaReception=(id)=>{
+    return axios.get(`/gateway/?cinemaId=${id}&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.info'
+        }
+    })
+}

@@ -22,7 +22,7 @@
           </div>
           <div>
             <!-- 自定义过滤器：指定格式 -->
-            <span>{{item.premiereAt | formatDate}}</span>
+            <span>{{item.premiereAt | formatDate}}上映</span>
           </div>
           <div>
             <span>{{item.nation}} | {{item.runtime}}分钟</span>
@@ -36,19 +36,12 @@
           <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"  v-for="(val,index) in item.actors" :key="index">
-                  <img :src="val.avatarAddress" class="actorPhoto" />
+                  <img :src="val.avatarAddress" class="actorPhoto" style="width:100"/>
                   <div class="actor">{{val.name}}</div>
                   <div class="role">{{val.role}}</div>
                 </div>
             </div>
           </div>
-          <!-- <ul class="actorList">
-            <li v-for="(val,index) in item.actors" :key="index">
-              <img :src="val.avatarAddress" class="actorPhoto" />
-              <div class="actor">{{val.name}}</div>
-              <div class="role">{{val.role}}</div>
-            </li>
-          </ul> -->
         </div>
         <div>
           <h5 class="footer">
@@ -103,21 +96,10 @@ export default {
     back() {
       history.go(-2);
     },
-    // 控制顶部的显示和隐藏
-    // topShow(){
-    //     if(document.documentElement.scrollTop >= this.$refs.top[0].offsetHeight){
-    //         this.status=true;
-    //     }else{
-    //         this.status=false;
-    //     }
-    // }
   },
   mounted(){
-    //   监听窗口滚动
-      // window.onscroll=this.topShow;
   },
   beforeDestroy(){
-      // window.onscroll= null;
   },
 };
 </script>
@@ -180,22 +162,23 @@ export default {
       line-height: 0.8rem;
       padding-left: 0.1rem;
     }
-    .actorList {
-      display: flex;
-      li {
-        width: 1.7rem;
-        margin: 0 0.06rem;
-        .actorPhoto {
-          height: 1.7rem;
-        }
-        .actor {
-          font: 0.24rem/0.36rem "";
-          margin-top: 0.2rem;
-        }
-        .role {
-          font-size: 0.2rem;
-        }
+    .swiper-wrapper{
+      height:2.8rem;
+      img{
+        width:1.7rem;
+        height:2rem;
       }
+      .swiper-slide{
+        width:1rem;
+      }
+    }
+    .actor{
+      font:.26rem/1.2 "";
+      margin-left:.08rem;
+    }
+    .role{
+      margin-left:.1rem;
+      font:.26rem/1.2 "";
     }
   }
 

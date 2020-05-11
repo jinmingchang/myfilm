@@ -1,0 +1,23 @@
+{
+  "id": "1773836",
+  "name": "star",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "521533",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "10471155",
+      "name": "取消",
+      "font_class": "qa-close",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    }
+  ]
+}

@@ -10,81 +10,110 @@ import Come from '@/views/movies/Come'
 import HotDetail from '@/views/Detail/HotDetail'
 import ComeDetail from '@/views/Detail/ComeDetail'
 import City from '@/views/City'
+import Sear from '@/views/cinema/Sear'
+import CinemaFilm from "@/views/cinema/CinemaFilm"
+import CinemaReception from "@/views/cinema/CinemaReception"
+// import { getCinemaReception } from '../api'
+// import { Search } from 'vant'
 Vue.use(VueRouter)
 
-  const routes = [
-    {
-      path:"/hotdetail/:id",
-      name:"hotdetail",
-      component:HotDetail,
-      meta:{
-        'status':true    
-      }
-    },
-    {
-      path:"/comedetail/:id",
-      name:"comedetail",
-      component:ComeDetail,
-      meta:{
-        'status':true    
-      }
-    },
-    {
-      path:"/movie",
-      component:Movie,
-      children:[
-        {
-          path:"hot",
-          component:Hot
-        },
-        {
-          path:"comming",
-          component:Come
-        },
-        {
-          path:"",
-          redirect:'hot'
-        },
-        {
-          path:"*",
-          redirect:'hot'
-        }
-      ]
-      
-    },
-    {
-      path:"/cinema",
-      component:Cinema 
-    },
-    {
-      path:"/info",
-      component:Info,
-      meta:{
-        'status':true    
-      }
-    },
-    {
-      path:"/user",
-      component:User
-    },
-    {
-      path:"/",
-      redirect:"/movie"
-    },
-    {
-      path:"/city",
-      component:City,
-      meta:{
-        'status':true    
-      }
-    },
-    {
-      path:"*",
-      component:Not,
-      meta:{
-        'status':true    
-      }
+const routes = [
+  {
+    path: "/hotdetail/:id",
+    name: "hotdetail",
+    component: HotDetail,
+    meta: {
+      'status': true
     }
+  },
+  {
+    path: "/comedetail/:id",
+    name: "comedetail",
+    component: ComeDetail,
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/movie",
+    component: Movie,
+    children: [
+      {
+        path: "hot",
+        component: Hot
+      },
+      {
+        path: "comming",
+        component: Come
+      },
+      {
+        path: "",
+        redirect: 'hot'
+      },
+      {
+        path: "*",
+        redirect: 'hot'
+      }
+    ]
+
+  },
+  {
+    path: "/cinema",
+    component: Cinema,
+  },
+  {
+    path: "/cinemafilm/:cinemaId",
+    component: CinemaFilm,
+    name:'cinemafilm',
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/cinemasearch",
+    component: Sear,
+    name: "search",
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path:"/cinemareception/:cinemaId",
+    component:CinemaReception,
+    name:'cinemareception',
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/info",
+    component: Info,
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/user",
+    component: User
+  },
+  {
+    path: "/",
+    redirect: "/movie"
+  },
+  {
+    path: "/city",
+    component: City,
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "*",
+    component: Not,
+    meta: {
+      'status': true
+    }
+  }
 
 ]
 

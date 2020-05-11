@@ -15,6 +15,10 @@
     <div class="list">
         <router-view></router-view>
     </div>
+    <div class="gps" @click="toCity">
+        <span class="gpsCity">{{position}}</span>
+        <span class="gpsimg">&lt;</span>
+    </div>
 </div>
 </template>
 
@@ -30,6 +34,11 @@ export default {
     components:{
         Slide,
         NavMovie,
+    },
+    computed:{
+        position(){
+            return localStorage.getItem("cityName")
+        }
     },
     mounted(){
         // 监听窗口滚动
@@ -47,6 +56,10 @@ export default {
             }else{
                 this.status=false;
             }
+        },
+        // 点击路由到定位页
+        toCity(){
+            this.$router.push('/city')
         }
     }
 }
@@ -60,5 +73,20 @@ export default {
         right:0;
         background-color:#fff;
     }
-    
+    .gps{
+        position:fixed;
+        background-color: rgba($color: #000000, $alpha: .5);
+        border-radius:.16rem;
+        padding:.06rem;
+        z-index:2;
+        left:.2rem;
+        top:.4rem;
+        color:#fff;
+        .gpsimg{
+            width:.12rem;
+            height:.1rem;
+            margin-left:.1rem;
+            transform: rotateZ(90deg);
+        }
+    }
 </style>
