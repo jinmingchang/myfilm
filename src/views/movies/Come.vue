@@ -64,7 +64,7 @@ export default {
       this.getList();
     },
     getList() {
-      getMovie(2).then(res => {
+      getMovie(localStorage.getItem("cityId"),2).then(res => {
         if (res.status == 200) {
           this.list = res.data.data.films;
           this.setData(this.list)
@@ -83,6 +83,7 @@ export default {
   margin: 0 0.3rem;
   .movieCont {
     display: flex;
+    padding:.3rem;
     .pic {
       width: 1.3rem;
       height: 100%;

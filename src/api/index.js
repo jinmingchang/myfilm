@@ -1,8 +1,8 @@
 import axios from './request'       //axios的二次封装
-export const getMovie = (type)=>{
+export const getMovie = (id,type)=>{
     return axios.get("/gateway",{
         params:{
-            cityId:310100,
+            cityId:id,
             pageNum:1,
             pageSize:10,
             type:type,
@@ -107,6 +107,23 @@ export const getCinemaReception=(id)=>{
     return axios.get(`/gateway/?cinemaId=${id}&k=${Date.now()}`,{
         headers:{
             'X-Host': 'mall.film-ticket.cinema.info'
+        }
+    })
+}
+
+export const getFilmCinema=(id)=>{
+    return axios.get(`/gateway?cityId=${id}&k=${Date.now()}`,{
+        headers:{
+            'X-Host': 'mall.cfg.cinema.banners'
+        }
+    })
+}
+
+export const getOtherFilmCinema=()=>{
+    return axios.post('/gateway',{
+        k:Date.now(),
+        headers:{
+            'X-Host': 'mall.film-ticket.cinema.batch-cinema'
         }
     })
 }

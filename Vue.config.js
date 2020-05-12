@@ -14,7 +14,14 @@ module.exports={
                     'pathRewrite':{
                         "^/lg":"/"
                     }
-            }  
+            },
+            "/register":{
+                'target':"http://api.icodeilife.cn:81",
+                    'changeOrigin':true,
+                    'pathRewrite':{
+                        "^/register":"/"
+                    }
+            },
         }
     }
 }

@@ -69,7 +69,7 @@ export default {
       this.getData();
     },
     getData() {
-      getMovie(1).then(res => {
+      getMovie(localStorage.getItem("cityId"),1).then(res => {
         this.lists = this.lists.concat(res.data.data.films);
         this.setList(this.lists)
         this.loading = false;

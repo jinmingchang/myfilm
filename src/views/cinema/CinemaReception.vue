@@ -36,7 +36,6 @@ export default {
   created() {
     getCinemaReception(this.$route.params.cinemaId).then(res => {
       this.list.push(res.data.data.cinema);
-      console.log(this.list);
     });
   },
   methods: {

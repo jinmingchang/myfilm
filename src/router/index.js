@@ -13,11 +13,28 @@ import City from '@/views/City'
 import Sear from '@/views/cinema/Sear'
 import CinemaFilm from "@/views/cinema/CinemaFilm"
 import CinemaReception from "@/views/cinema/CinemaReception"
-// import { getCinemaReception } from '../api'
-// import { Search } from 'vant'
+import CinemaBuy from "@/views/cinema/CinemaBuy"
+import Login from "@/views/user/Login"
+import Register from "@/views/user/Register"
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Register,
+    meta: {
+      'status': true
+    }
+  },
   {
     path: "/hotdetail/:id",
     name: "hotdetail",
@@ -36,11 +53,13 @@ const routes = [
   },
   {
     path: "/movie",
+    name: "movie",
     component: Movie,
     children: [
       {
         path: "hot",
-        component: Hot
+        component: Hot,
+        name: "hot"
       },
       {
         path: "comming",
@@ -64,7 +83,7 @@ const routes = [
   {
     path: "/cinemafilm/:cinemaId",
     component: CinemaFilm,
-    name:'cinemafilm',
+    name: 'cinemafilm',
     meta: {
       'status': true
     }
@@ -78,9 +97,17 @@ const routes = [
     }
   },
   {
-    path:"/cinemareception/:cinemaId",
-    component:CinemaReception,
-    name:'cinemareception',
+    path: "/cinemareception/:cinemaId",
+    component: CinemaReception,
+    name: 'cinemareception',
+    meta: {
+      'status': true
+    }
+  },
+  {
+    path: "/cinemabuy/:filmId",
+    component: CinemaBuy,
+    name: "cinemabuy",
     meta: {
       'status': true
     }
@@ -94,6 +121,7 @@ const routes = [
   },
   {
     path: "/user",
+    name: "user",
     component: User
   },
   {

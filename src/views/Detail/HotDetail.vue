@@ -1,35 +1,35 @@
 <template>
   <div>
     <div class="back" @click="back">&lt;&lt;</div>
-    <ul>
-      <li v-for="item in list" :key="item.filmId">
+    <div v-for="item in list" :key="item.filmId">
+      <div>
+        <img :src="item.poster" class="listimg"/>
+      </div>
+      <div class="cont">
         <div>
-          <img :src="item.poster" />
+          <span class="name">{{item.name}}</span>
+          <span class="type">{{item.item.name}}</span>
+          <span class="evaluate">{{item.grade}}分</span>
         </div>
-        <div class="cont">
-          <div>
-            <span class="name">{{item.name}}</span>
-            <span class="type">{{item.item.name}}</span>
-            <span class="evaluate">{{item.grade}}分</span>
-          </div>
-          <div>
-            <span class="category">{{item.category}}</span>
-          </div>
-          <div>
-            <span>{{item.nation}}</span>
-            <span>{{item.runtime}}分钟</span>
-          </div>
-          <div><span>{{item.premiereAt | formatDate}}</span></div>
-          <p>{{item.synopsis}}</p>
+        <div>
+          <span class="category">{{item.category}}</span>
         </div>
-      </li>
-    </ul>
-    <footer>选座购票</footer>
+        <div>
+          <span>{{item.nation}}</span>
+          <span>{{item.runtime}}分钟</span>
+        </div>
+        <div>
+          <span>{{item.premiereAt | formatDate}}</span>
+        </div>
+        <p>{{item.synopsis}}</p>
+      </div>
+      <div @click="toCinemaBuy(item.filmId)" class="footer">选座购票</div>
+    </div>
   </div>
 </template>
 
 <script>
-import {getDetail} from "@/api";
+import { getDetail } from "@/api";
 export default {
   data() {
     return {
@@ -39,9 +39,9 @@ export default {
   },
   // 根据id获取电影相关数据
   created() {
-    getDetail(this.id).then(res=>{
+    getDetail(this.id).then(res => {
       this.list.push(res.data.data.film);
-    })
+    });
   },
   // 监听Hot路由传过来的id
   watch: {
@@ -56,6 +56,13 @@ export default {
   methods: {
     back() {
       history.go(-2);
+    },
+    toCinemaBuy(id){
+      this.$router.push({
+        name:"cinemabuy",
+        params:{filmId:id},
+        query:{k:Date.now()}
+      })
     }
   }
 };
@@ -74,14 +81,17 @@ export default {
   text-align: center;
   background: rgba($color: #f66600, $alpha: 0.5);
 }
+.listimg{
+  width:100%;
+}
 .cont {
-  padding: 0 .4rem;
-  font:.32rem/.4rem "";
-  p{
-    text-indent: .64rem;
+  padding: 0 0.4rem;
+  font: 0.32rem/.4rem "";
+  p {
+    text-indent: 0.64rem;
   }
 }
-footer {
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
